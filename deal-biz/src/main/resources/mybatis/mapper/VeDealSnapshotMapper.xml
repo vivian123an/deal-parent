@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="me.quxiu.deal.mapper.VeDealSnapshotMapper" >
+  <resultMap id="BaseResultMap" type="VeDealSnapshot" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
+    <result column="sub_name" property="subName" jdbcType="VARCHAR" />
+    <result column="cate_id" property="cateId" jdbcType="INTEGER" />
+    <result column="icon" property="icon" jdbcType="VARCHAR" />
+    <result column="brief_index" property="briefIndex" jdbcType="VARCHAR" />
+    <result column="time_begin" property="timeBegin" jdbcType="TIMESTAMP" />
+    <result column="time_end" property="timeEnd" jdbcType="TIMESTAMP" />
+    <result column="user_min_bought" property="userMinBought" jdbcType="INTEGER" />
+    <result column="user_max_bought" property="userMaxBought" jdbcType="INTEGER" />
+    <result column="origin_price" property="originPrice" jdbcType="DOUBLE" />
+    <result column="current_price" property="currentPrice" jdbcType="DOUBLE" />
+    <result column="phone_price" property="phonePrice" jdbcType="DECIMAL" />
+    <result column="deal_brand" property="dealBrand" jdbcType="INTEGER" />
+    <result column="is_effect" property="isEffect" jdbcType="BIT" />
+    <result column="is_delete" property="isDelete" jdbcType="BIT" />
+    <result column="update_time" property="updateTime" jdbcType="INTEGER" />
+    <result column="allow_promote" property="allowPromote" jdbcType="TINYINT" />
+    <result column="brand_id" property="brandId" jdbcType="INTEGER" />
+    <result column="division_id" property="divisionId" jdbcType="SMALLINT" />
+    <result column="supplier_id" property="supplierId" jdbcType="INTEGER" />
+    <result column="is_seller_post" property="isSellerPost" jdbcType="TINYINT" />
+    <result column="submit_status" property="submitStatus" jdbcType="TINYINT" />
+    <result column="submit_time" property="submitTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="audit_status" property="auditStatus" jdbcType="TINYINT" />
+    <result column="audit_msg" property="auditMsg" jdbcType="VARCHAR" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="audit_admin_id" property="auditAdminId" jdbcType="INTEGER" />
+    <result column="sku_audit_status" property="skuAuditStatus" jdbcType="TINYINT" />
+    <result column="sku_audit_admin_id" property="skuAuditAdminId" jdbcType="INTEGER" />
+    <result column="sku_audit_time" property="skuAuditTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="VeDealSnapshot" extends="BaseResultMap" >
+    <result column="name" property="name" jdbcType="LONGVARCHAR" />
+    <result column="brief" property="brief" jdbcType="LONGVARCHAR" />
+    <result column="description" property="description" jdbcType="LONGVARCHAR" />
+    <result column="m_description" property="mDescription" jdbcType="LONGVARCHAR" />
+    <result column="sku_audit_msg" property="skuAuditMsg" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, goods_id, sub_name, cate_id, icon, brief_index, time_begin, time_end, user_min_bought, 
+    user_max_bought, origin_price, current_price, phone_price, deal_brand, is_effect, 
+    is_delete, update_time, allow_promote, brand_id, division_id, supplier_id, is_seller_post, 
+    submit_status, submit_time, status, audit_status, audit_msg, audit_time, audit_admin_id, 
+    sku_audit_status, sku_audit_admin_id, sku_audit_time
+  </sql>
+  <sql id="Blob_Column_List" >
+    name, brief, description, m_description, sku_audit_msg
+  </sql>
+  <select id="get" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ve_deal_snapshot
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="getByGoodsId" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ve_deal_snapshot
+    where goods_id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <insert id="save" parameterType="VeDealSnapshot" useGeneratedKeys="true" keyProperty="id"  keyColumn="id">
+    insert into ve_deal_snapshot
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="goodsId != null" >
+        goods_id,
+      </if>
+      <if test="subName != null" >
+        sub_name,
+      </if>
+      <if test="cateId != null" >
+        cate_id,
+      </if>
+      <if test="icon != null" >
+        icon,
+      </if>
+      <if test="briefIndex != null" >
+        brief_index,
+      </if>
+      <if test="timeBegin != null" >
+        time_begin,
+      </if>
+      <if test="timeEnd != null" >
+        time_end,
+      </if>
+      <if test="userMinBought != null" >
+        user_min_bought,
+      </if>
+      <if test="userMaxBought != null" >
+        user_max_bought,
+      </if>
+      <if test="originPrice != null" >
+        origin_price,
+      </if>
+      <if test="currentPrice != null" >
+        current_price,
+      </if>
+      <if test="phonePrice != null" >
+        phone_price,
+      </if>
+      <if test="dealBrand != null" >
+        deal_brand,
+      </if>
+      <if test="isEffect != null" >
+        is_effect,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="allowPromote != null" >
+        allow_promote,
+      </if>
+      <if test="brandId != null" >
+        brand_id,
+      </if>
+      <if test="divisionId != null" >
+        division_id,
+      </if>
+      <if test="supplierId != null" >
+        supplier_id,
+      </if>
+      <if test="isSellerPost != null" >
+        is_seller_post,
+      </if>
+      <if test="submitStatus != null" >
+        submit_status,
+      </if>
+      <if test="submitTime != null" >
+        submit_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="auditStatus != null" >
+        audit_status,
+      </if>
+      <if test="auditMsg != null" >
+        audit_msg,
+      </if>
+      <if test="auditTime != null" >
+        audit_time,
+      </if>
+      <if test="auditAdminId != null" >
+        audit_admin_id,
+      </if>
+      <if test="skuAuditStatus != null" >
+        sku_audit_status,
+      </if>
+      <if test="skuAuditAdminId != null" >
+        sku_audit_admin_id,
+      </if>
+      <if test="skuAuditTime != null" >
+        sku_audit_time,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="brief != null" >
+        brief,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="mDescription != null" >
+        m_description,
+      </if>
+      <if test="skuAuditMsg != null" >
+        sku_audit_msg,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="subName != null" >
+        #{subName,jdbcType=VARCHAR},
+      </if>
+      <if test="cateId != null" >
+        #{cateId,jdbcType=INTEGER},
+      </if>
+      <if test="icon != null" >
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="briefIndex != null" >
+        #{briefIndex,jdbcType=VARCHAR},
+      </if>
+      <if test="timeBegin != null" >
+        #{timeBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="timeEnd != null" >
+        #{timeEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userMinBought != null" >
+        #{userMinBought,jdbcType=INTEGER},
+      </if>
+      <if test="userMaxBought != null" >
+        #{userMaxBought,jdbcType=INTEGER},
+      </if>
+      <if test="originPrice != null" >
+        #{originPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="currentPrice != null" >
+        #{currentPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="phonePrice != null" >
+        #{phonePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="dealBrand != null" >
+        #{dealBrand,jdbcType=INTEGER},
+      </if>
+      <if test="isEffect != null" >
+        #{isEffect,jdbcType=BIT},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=INTEGER},
+      </if>
+      <if test="allowPromote != null" >
+        #{allowPromote,jdbcType=TINYINT},
+      </if>
+      <if test="brandId != null" >
+        #{brandId,jdbcType=INTEGER},
+      </if>
+      <if test="divisionId != null" >
+        #{divisionId,jdbcType=SMALLINT},
+      </if>
+      <if test="supplierId != null" >
+        #{supplierId,jdbcType=INTEGER},
+      </if>
+      <if test="isSellerPost != null" >
+        #{isSellerPost,jdbcType=TINYINT},
+      </if>
+      <if test="submitStatus != null" >
+        #{submitStatus,jdbcType=TINYINT},
+      </if>
+      <if test="submitTime != null" >
+        #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="auditStatus != null" >
+        #{auditStatus,jdbcType=TINYINT},
+      </if>
+      <if test="auditMsg != null" >
+        #{auditMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="auditTime != null" >
+        #{auditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditAdminId != null" >
+        #{auditAdminId,jdbcType=INTEGER},
+      </if>
+      <if test="skuAuditStatus != null" >
+        #{skuAuditStatus,jdbcType=TINYINT},
+      </if>
+      <if test="skuAuditAdminId != null" >
+        #{skuAuditAdminId,jdbcType=INTEGER},
+      </if>
+      <if test="skuAuditTime != null" >
+        #{skuAuditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="brief != null" >
+        #{brief,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="mDescription != null" >
+        #{mDescription,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="skuAuditMsg != null" >
+        #{skuAuditMsg,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+	<selectKey keyProperty="id" resultType="int" order="AFTER">  
+       SELECT LAST_INSERT_ID();  
+    </selectKey>    
+  </insert>
+  
+  <update id="update" parameterType="VeDealSnapshot" >
+    update ve_deal_snapshot
+    <set >
+      <if test="goodsId != null" >
+        goods_id = #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="subName != null" >
+        sub_name = #{subName,jdbcType=VARCHAR},
+      </if>
+      <if test="cateId != null" >
+        cate_id = #{cateId,jdbcType=INTEGER},
+      </if>
+      <if test="icon != null" >
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="briefIndex != null" >
+        brief_index = #{briefIndex,jdbcType=VARCHAR},
+      </if>
+      <if test="timeBegin != null" >
+        time_begin = #{timeBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="timeEnd != null" >
+        time_end = #{timeEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="userMinBought != null" >
+        user_min_bought = #{userMinBought,jdbcType=INTEGER},
+      </if>
+      <if test="userMaxBought != null" >
+        user_max_bought = #{userMaxBought,jdbcType=INTEGER},
+      </if>
+      <if test="originPrice != null" >
+        origin_price = #{originPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="currentPrice != null" >
+        current_price = #{currentPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="phonePrice != null" >
+        phone_price = #{phonePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="dealBrand != null" >
+        deal_brand = #{dealBrand,jdbcType=INTEGER},
+      </if>
+      <if test="isEffect != null" >
+        is_effect = #{isEffect,jdbcType=BIT},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=INTEGER},
+      </if>
+      <if test="allowPromote != null" >
+        allow_promote = #{allowPromote,jdbcType=TINYINT},
+      </if>
+      <if test="brandId != null" >
+        brand_id = #{brandId,jdbcType=INTEGER},
+      </if>
+      <if test="divisionId != null" >
+        division_id = #{divisionId,jdbcType=SMALLINT},
+      </if>
+      <if test="supplierId != null" >
+        supplier_id = #{supplierId,jdbcType=INTEGER},
+      </if>
+      <if test="isSellerPost != null" >
+        is_seller_post = #{isSellerPost,jdbcType=TINYINT},
+      </if>
+      <if test="submitStatus != null" >
+        submit_status = #{submitStatus,jdbcType=TINYINT},
+      </if>
+      <if test="submitTime != null" >
+        submit_time = #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="auditStatus != null" >
+        audit_status = #{auditStatus,jdbcType=TINYINT},
+      </if>
+      <if test="auditMsg != null" >
+        audit_msg = #{auditMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="auditTime != null" >
+        audit_time = #{auditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditAdminId != null" >
+        audit_admin_id = #{auditAdminId,jdbcType=INTEGER},
+      </if>
+      <if test="skuAuditStatus != null" >
+        sku_audit_status = #{skuAuditStatus,jdbcType=TINYINT},
+      </if>
+      <if test="skuAuditAdminId != null" >
+        sku_audit_admin_id = #{skuAuditAdminId,jdbcType=INTEGER},
+      </if>
+      <if test="skuAuditTime != null" >
+        sku_audit_time = #{skuAuditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="brief != null" >
+        brief = #{brief,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="mDescription != null" >
+        m_description = #{mDescription,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="skuAuditMsg != null" >
+        sku_audit_msg = #{skuAuditMsg,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <insert id="saveBatch" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id"  keyColumn="id">
+  	insert into ve_deal_snapshot(goods_id, name, sub_name, cate_id, icon, brief, brief_index, description, m_description, 
+  		time_begin, time_end, user_min_bought, user_max_bought, origin_price, current_price, phone_price, deal_brand, is_effect, 
+  		is_delete, update_time, allow_promote, brand_id, division_id, supplier_id, is_seller_post, submit_status, submit_time, status, 
+  		audit_status, audit_msg, audit_time, audit_admin_id, sku_audit_status, sku_audit_admin_id, sku_audit_msg, sku_audit_time) values
+  	<foreach collection="list" item="item" index="index" separator=",">  
+	    <trim prefix="(" suffix=")" suffixOverrides=",">
+			<choose>
+				<when test="item.goodsId == null">0,</when>
+				<otherwise>#{item.goodsId},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.name == null">'',</when>
+				<otherwise>#{item.name},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.subName == null">'',</when>
+				<otherwise>#{item.subName},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.cateId == null">0,</when>
+				<otherwise>#{item.cateId},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.icon == null">'',</when>
+				<otherwise>#{item.icon},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.brief == null">'',</when>
+				<otherwise>#{item.brief},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.briefIndex == null">'',</when>
+				<otherwise>#{item.briefIndex},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.description == null">'',</when>
+				<otherwise>#{item.description},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.mDescription == null">'',</when>
+				<otherwise>#{item.mDescription},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.timeBegin == null">0000-00-00 00:00:00,</when>
+				<otherwise>#{item.timeBegin},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.timeEnd == null">0000-00-00 00:00:00,</when>
+				<otherwise>#{item.timeEnd},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.userMinBought == null">0,</when>
+				<otherwise>#{item.userMinBought},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.userMaxBought == null">0,</when>
+				<otherwise>#{item.userMaxBought},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.originPrice == null">'',</when>
+				<otherwise>#{item.originPrice},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.currentPrice == null">'',</when>
+				<otherwise>#{item.currentPrice},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.phonePrice == null">0.0000,</when>
+				<otherwise>#{item.phonePrice},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.dealBrand == null">0,</when>
+				<otherwise>#{item.dealBrand},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.isEffect == null">0,</when>
+				<otherwise>#{item.isEffect},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.isDelete == null">0,</when>
+				<otherwise>#{item.isDelete},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.updateTime == null">0,</when>
+				<otherwise>#{item.updateTime},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.allowPromote == null">0,</when>
+				<otherwise>#{item.allowPromote},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.brandId == null">0,</when>
+				<otherwise>#{item.brandId},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.divisionId == null">'',</when>
+				<otherwise>#{item.divisionId},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.supplierId == null">0,</when>
+				<otherwise>#{item.supplierId},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.isSellerPost == null">0,</when>
+				<otherwise>#{item.isSellerPost},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.submitStatus == null">0,</when>
+				<otherwise>#{item.submitStatus},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.submitTime == null">0000-00-00 00:00:00,</when>
+				<otherwise>#{item.submitTime},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.status == null">0,</when>
+				<otherwise>#{item.status},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.auditStatus == null">0,</when>
+				<otherwise>#{item.auditStatus},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.auditMsg == null">'',</when>
+				<otherwise>#{item.auditMsg},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.auditTime == null">0000-00-00 00:00:00,</when>
+				<otherwise>#{item.auditTime},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.auditAdminId == null">0,</when>
+				<otherwise>#{item.auditAdminId},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.skuAuditStatus == null">0,</when>
+				<otherwise>#{item.skuAuditStatus},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.skuAuditAdminId == null">0,</when>
+				<otherwise>#{item.skuAuditAdminId},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.skuAuditMsg == null">'',</when>
+				<otherwise>#{item.skuAuditMsg},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.skuAuditTime == null">0000-00-00 00:00:00,</when>
+				<otherwise>#{item.skuAuditTime},</otherwise>
+			</choose>
+	    </trim>
+    </foreach>
+  	<selectKey keyProperty="id" resultType="int" order="AFTER">  
+    	SELECT LAST_INSERT_ID();  
+    </selectKey>
+  </insert>
+</mapper>

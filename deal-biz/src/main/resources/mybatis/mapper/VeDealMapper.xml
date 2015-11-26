@@ -1,0 +1,1096 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="me.quxiu.deal.mapper.VeDealMapper" >
+  <resultMap id="BaseResultMap" type="VeDeal" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="goods_sn" property="goodsSn" jdbcType="VARCHAR" />
+    <result column="barcode" property="barcode" jdbcType="VARCHAR" />
+    <result column="sub_name" property="subName" jdbcType="VARCHAR" />
+    <result column="cate_id" property="cateId" jdbcType="INTEGER" />
+    <result column="icon" property="icon" jdbcType="VARCHAR" />
+    <result column="buy_status" property="buyStatus" jdbcType="BIT" />
+    <result column="time_begin" property="timeBegin" jdbcType="TIMESTAMP" />
+    <result column="time_end" property="timeEnd" jdbcType="TIMESTAMP" />
+    <result column="min_bought" property="minBought" jdbcType="INTEGER" />
+    <result column="max_bought" property="maxBought" jdbcType="INTEGER" />
+    <result column="user_min_bought" property="userMinBought" jdbcType="INTEGER" />
+    <result column="user_max_bought" property="userMaxBought" jdbcType="INTEGER" />
+    <result column="origin_price" property="originPrice" jdbcType="DOUBLE" />
+    <result column="current_price" property="currentPrice" jdbcType="DOUBLE" />
+    <result column="is_coupon" property="isCoupon" jdbcType="BIT" />
+    <result column="is_delivery" property="isDelivery" jdbcType="BIT" />
+    <result column="is_effect" property="isEffect" jdbcType="BIT" />
+    <result column="is_delete" property="isDelete" jdbcType="BIT" />
+    <result column="user_count" property="userCount" jdbcType="INTEGER" />
+    <result column="buy_count" property="buyCount" jdbcType="INTEGER" />
+    <result column="allow_promote" property="allowPromote" jdbcType="BIT" />
+    <result column="return_money" property="returnMoney" jdbcType="DOUBLE" />
+    <result column="return_score" property="returnScore" jdbcType="INTEGER" />
+    <result column="return_point" property="returnPoint" jdbcType="INTEGER" />
+    <result column="brief_index" property="briefIndex" jdbcType="VARCHAR" />
+    <result column="sort" property="sort" jdbcType="INTEGER" />
+    <result column="deal_goods_type" property="dealGoodsType" jdbcType="INTEGER" />
+    <result column="success_time" property="successTime" jdbcType="INTEGER" />
+    <result column="weight" property="weight" jdbcType="DOUBLE" />
+    <result column="weight_id" property="weightId" jdbcType="INTEGER" />
+    <result column="is_referral" property="isReferral" jdbcType="BIT" />
+    <result column="buy_type" property="buyType" jdbcType="BIT" />
+    <result column="discount" property="discount" jdbcType="DOUBLE" />
+    <result column="free_delivery" property="freeDelivery" jdbcType="BIT" />
+    <result column="define_payment" property="definePayment" jdbcType="BIT" />
+    <result column="is_hot" property="isHot" jdbcType="BIT" />
+    <result column="is_new" property="isNew" jdbcType="BIT" />
+    <result column="is_best" property="isBest" jdbcType="BIT" />
+    <result column="is_lottery" property="isLottery" jdbcType="BIT" />
+    <result column="uname" property="uname" jdbcType="VARCHAR" />
+    <result column="forbid_sms" property="forbidSms" jdbcType="BIT" />
+    <result column="cart_type" property="cartType" jdbcType="BIT" />
+    <result column="avg_point" property="avgPoint" jdbcType="REAL" />
+    <result column="create_time" property="createTime" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="INTEGER" />
+    <result column="online_time" property="onlineTime" jdbcType="INTEGER" />
+    <result column="brand_id" property="brandId" jdbcType="INTEGER" />
+    <result column="comment_count" property="commentCount" jdbcType="INTEGER" />
+    <result column="collect_count" property="collectCount" jdbcType="INTEGER" />
+    <result column="level_limit" property="levelLimit" jdbcType="BIT" />
+    <result column="is_ensure" property="isEnsure" jdbcType="BIT" />
+    <result column="is_insurance" property="isInsurance" jdbcType="BIT" />
+    <result column="is_returns" property="isReturns" jdbcType="BIT" />
+    <result column="is_pay" property="isPay" jdbcType="BIT" />
+    <result column="is_index_recommend" property="isIndexRecommend" jdbcType="TINYINT" />
+    <result column="is_index_new" property="isIndexNew" jdbcType="BIT" />
+    <result column="is_index_crazy" property="isIndexCrazy" jdbcType="BIT" />
+    <result column="cate_id2" property="cateId2" jdbcType="VARCHAR" />
+    <result column="brand_id2" property="brandId2" jdbcType="VARCHAR" />
+    <result column="division_id" property="divisionId" jdbcType="SMALLINT" />
+    <result column="supplier_id" property="supplierId" jdbcType="INTEGER" />
+    <result column="admin_del_id" property="adminDelId" jdbcType="INTEGER" />
+    <result column="phone_price" property="phonePrice" jdbcType="DECIMAL" />
+    <result column="sale_num" property="saleNum" jdbcType="SMALLINT" />
+    <result column="is_biaopin" property="isBiaopin" jdbcType="BIT" />
+    <result column="deal_brand" property="dealBrand" jdbcType="INTEGER" />
+    <result column="good_params" property="goodParams" jdbcType="VARCHAR" />
+    <result column="selling_point" property="sellingPoint" jdbcType="VARCHAR" />
+    <result column="match_ids" property="matchIds" jdbcType="VARCHAR" />
+    <result column="mobile_sort" property="mobileSort" jdbcType="INTEGER" />
+    <result column="submit_status" property="submitStatus" jdbcType="TINYINT" />
+    <result column="submit_time" property="submitTime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="audit_status" property="auditStatus" jdbcType="TINYINT" />
+    <result column="audit_msg" property="auditMsg" jdbcType="VARCHAR" />
+    <result column="audit_time_bak" property="auditTimeBak" jdbcType="INTEGER" />
+    <result column="audit_time" property="auditTime" jdbcType="TIMESTAMP" />
+    <result column="audit_admin_id" property="auditAdminId" jdbcType="INTEGER" />
+    <result column="is_seller_post" property="isSellerPost" jdbcType="BIT" />
+    <result column="sync_wms_date" property="syncWmsDate" jdbcType="TIMESTAMP" />
+    <result column="sync_ebs_date" property="syncEbsDate" jdbcType="TIMESTAMP" />
+    <result column="sync_flag_date" property="syncFlagDate" jdbcType="TIMESTAMP" />
+    <result column="sync_wms_count" property="syncWmsCount" jdbcType="INTEGER" />
+    <result column="sync_ebs_count" property="syncEbsCount" jdbcType="INTEGER" />
+    <result column="is_sale" property="isSale" jdbcType="TINYINT" />
+    <result column="sku_audit_status" property="skuAuditStatus" jdbcType="TINYINT" />
+    <result column="sku_audit_admin_id" property="skuAuditAdminId" jdbcType="INTEGER" />
+    <result column="copy_from_deal_id" property="copyFromDealId" jdbcType="INTEGER" />
+    <result column="sku_audit_time" property="skuAuditTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="VeDeal" extends="BaseResultMap" >
+    <result column="name" property="name" jdbcType="LONGVARCHAR" />
+    <result column="description" property="description" jdbcType="LONGVARCHAR" />
+    <result column="m_description" property="mDescription" jdbcType="LONGVARCHAR" />
+    <result column="brief" property="brief" jdbcType="LONGVARCHAR" />
+    <result column="seo_title" property="seoTitle" jdbcType="LONGVARCHAR" />
+    <result column="seo_keyword" property="seoKeyword" jdbcType="LONGVARCHAR" />
+    <result column="seo_description" property="seoDescription" jdbcType="LONGVARCHAR" />
+    <result column="name_match" property="nameMatch" jdbcType="LONGVARCHAR" />
+    <result column="name_match_row" property="nameMatchRow" jdbcType="LONGVARCHAR" />
+    <result column="cate_match" property="cateMatch" jdbcType="LONGVARCHAR" />
+    <result column="cate_match_row" property="cateMatchRow" jdbcType="LONGVARCHAR" />
+    <result column="tag_match" property="tagMatch" jdbcType="LONGVARCHAR" />
+    <result column="tag_match_row" property="tagMatchRow" jdbcType="LONGVARCHAR" />
+    <result column="search_tags" property="searchTags" jdbcType="LONGVARCHAR" />
+    <result column="sku_audit_msg" property="skuAuditMsg" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id , goods_sn, barcode, sub_name, cate_id, icon, buy_status, time_begin, time_end, 
+    min_bought, max_bought, user_min_bought, user_max_bought, origin_price, current_price, 
+    is_coupon, is_delivery, is_effect, is_delete, user_count, buy_count, allow_promote, 
+    return_money, return_score, return_point, brief_index, sort, deal_goods_type, success_time, 
+    weight, weight_id, is_referral, buy_type, discount, free_delivery, define_payment, 
+    is_hot, is_new, is_best, is_lottery, uname, forbid_sms, cart_type, avg_point, create_time, 
+    update_time, online_time, brand_id, comment_count, collect_count, level_limit, is_ensure, 
+    is_insurance, is_returns, is_pay, is_index_recommend, is_index_new, is_index_crazy, 
+    cate_id2, brand_id2, division_id, supplier_id, admin_del_id, phone_price, sale_num, 
+    is_biaopin, deal_brand, good_params, selling_point, match_ids, mobile_sort, submit_status, 
+    submit_time, status, audit_status, audit_msg, audit_time_bak, audit_time, audit_admin_id, 
+    is_seller_post, sync_wms_date, sync_ebs_date, sync_flag_date, sync_wms_count, sync_ebs_count, 
+    is_sale, sku_audit_status, sku_audit_admin_id, copy_from_deal_id, sku_audit_time
+  </sql>
+  <sql id="Blob_Column_List" >
+    name, description, m_description, brief, seo_title, seo_keyword, seo_description, 
+    name_match, name_match_row, cate_match, cate_match_row, tag_match, tag_match_row, 
+    search_tags, sku_audit_msg
+  </sql>
+  <select id="get" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ve_deal
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <insert id="save" parameterType="VeDeal" useGeneratedKeys="true" keyProperty="id"  keyColumn="id">
+    insert into ve_deal
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="goodsSn != null" >
+        goods_sn,
+      </if>
+      <if test="barcode != null" >
+        barcode,
+      </if>
+      <if test="subName != null" >
+        sub_name,
+      </if>
+      <if test="cateId != null" >
+        cate_id,
+      </if>
+      <if test="icon != null" >
+        icon,
+      </if>
+      <if test="buyStatus != null" >
+        buy_status,
+      </if>
+      <if test="timeBegin != null" >
+        time_begin,
+      </if>
+      <if test="timeEnd != null" >
+        time_end,
+      </if>
+      <if test="minBought != null" >
+        min_bought,
+      </if>
+      <if test="maxBought != null" >
+        max_bought,
+      </if>
+      <if test="userMinBought != null" >
+        user_min_bought,
+      </if>
+      <if test="userMaxBought != null" >
+        user_max_bought,
+      </if>
+      <if test="originPrice != null" >
+        origin_price,
+      </if>
+      <if test="currentPrice != null" >
+        current_price,
+      </if>
+      <if test="isCoupon != null" >
+        is_coupon,
+      </if>
+      <if test="isDelivery != null" >
+        is_delivery,
+      </if>
+      <if test="isEffect != null" >
+        is_effect,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="userCount != null" >
+        user_count,
+      </if>
+      <if test="buyCount != null" >
+        buy_count,
+      </if>
+      <if test="allowPromote != null" >
+        allow_promote,
+      </if>
+      <if test="returnMoney != null" >
+        return_money,
+      </if>
+      <if test="returnScore != null" >
+        return_score,
+      </if>
+      <if test="returnPoint != null" >
+        return_point,
+      </if>
+      <if test="briefIndex != null" >
+        brief_index,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+      <if test="dealGoodsType != null" >
+        deal_goods_type,
+      </if>
+      <if test="successTime != null" >
+        success_time,
+      </if>
+      <if test="weight != null" >
+        weight,
+      </if>
+      <if test="weightId != null" >
+        weight_id,
+      </if>
+      <if test="isReferral != null" >
+        is_referral,
+      </if>
+      <if test="buyType != null" >
+        buy_type,
+      </if>
+      <if test="discount != null" >
+        discount,
+      </if>
+      <if test="freeDelivery != null" >
+        free_delivery,
+      </if>
+      <if test="definePayment != null" >
+        define_payment,
+      </if>
+      <if test="isHot != null" >
+        is_hot,
+      </if>
+      <if test="isNew != null" >
+        is_new,
+      </if>
+      <if test="isBest != null" >
+        is_best,
+      </if>
+      <if test="isLottery != null" >
+        is_lottery,
+      </if>
+      <if test="uname != null" >
+        uname,
+      </if>
+      <if test="forbidSms != null" >
+        forbid_sms,
+      </if>
+      <if test="cartType != null" >
+        cart_type,
+      </if>
+      <if test="avgPoint != null" >
+        avg_point,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="onlineTime != null" >
+        online_time,
+      </if>
+      <if test="brandId != null" >
+        brand_id,
+      </if>
+      <if test="commentCount != null" >
+        comment_count,
+      </if>
+      <if test="collectCount != null" >
+        collect_count,
+      </if>
+      <if test="levelLimit != null" >
+        level_limit,
+      </if>
+      <if test="isEnsure != null" >
+        is_ensure,
+      </if>
+      <if test="isInsurance != null" >
+        is_insurance,
+      </if>
+      <if test="isReturns != null" >
+        is_returns,
+      </if>
+      <if test="isPay != null" >
+        is_pay,
+      </if>
+      <if test="isIndexRecommend != null" >
+        is_index_recommend,
+      </if>
+      <if test="isIndexNew != null" >
+        is_index_new,
+      </if>
+      <if test="isIndexCrazy != null" >
+        is_index_crazy,
+      </if>
+      <if test="cateId2 != null" >
+        cate_id2,
+      </if>
+      <if test="brandId2 != null" >
+        brand_id2,
+      </if>
+      <if test="divisionId != null" >
+        division_id,
+      </if>
+      <if test="supplierId != null" >
+        supplier_id,
+      </if>
+      <if test="adminDelId != null" >
+        admin_del_id,
+      </if>
+      <if test="phonePrice != null" >
+        phone_price,
+      </if>
+      <if test="saleNum != null" >
+        sale_num,
+      </if>
+      <if test="isBiaopin != null" >
+        is_biaopin,
+      </if>
+      <if test="dealBrand != null" >
+        deal_brand,
+      </if>
+      <if test="goodParams != null" >
+        good_params,
+      </if>
+      <if test="sellingPoint != null" >
+        selling_point,
+      </if>
+      <if test="matchIds != null" >
+        match_ids,
+      </if>
+      <if test="mobileSort != null" >
+        mobile_sort,
+      </if>
+      <if test="submitStatus != null" >
+        submit_status,
+      </if>
+      <if test="submitTime != null" >
+        submit_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="auditStatus != null" >
+        audit_status,
+      </if>
+      <if test="auditMsg != null" >
+        audit_msg,
+      </if>
+      <if test="auditTimeBak != null" >
+        audit_time_bak,
+      </if>
+      <if test="auditTime != null" >
+        audit_time,
+      </if>
+      <if test="auditAdminId != null" >
+        audit_admin_id,
+      </if>
+      <if test="isSellerPost != null" >
+        is_seller_post,
+      </if>
+      <if test="syncWmsDate != null" >
+        sync_wms_date,
+      </if>
+      <if test="syncEbsDate != null" >
+        sync_ebs_date,
+      </if>
+      <if test="syncFlagDate != null" >
+        sync_flag_date,
+      </if>
+      <if test="syncWmsCount != null" >
+        sync_wms_count,
+      </if>
+      <if test="syncEbsCount != null" >
+        sync_ebs_count,
+      </if>
+      <if test="isSale != null" >
+        is_sale,
+      </if>
+      <if test="skuAuditStatus != null" >
+        sku_audit_status,
+      </if>
+      <if test="skuAuditAdminId != null" >
+        sku_audit_admin_id,
+      </if>
+      <if test="copyFromDealId != null" >
+        copy_from_deal_id,
+      </if>      
+      <if test="skuAuditTime != null" >
+        sku_audit_time,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="mDescription != null" >
+        m_description,
+      </if>
+      <if test="brief != null" >
+        brief,
+      </if>
+      <if test="seoTitle != null" >
+        seo_title,
+      </if>
+      <if test="seoKeyword != null" >
+        seo_keyword,
+      </if>
+      <if test="seoDescription != null" >
+        seo_description,
+      </if>
+      <if test="nameMatch != null" >
+        name_match,
+      </if>
+      <if test="nameMatchRow != null" >
+        name_match_row,
+      </if>
+      <if test="cateMatch != null" >
+        cate_match,
+      </if>
+      <if test="cateMatchRow != null" >
+        cate_match_row,
+      </if>
+      <if test="tagMatch != null" >
+        tag_match,
+      </if>
+      <if test="tagMatchRow != null" >
+        tag_match_row,
+      </if>
+      <if test="searchTags != null" >
+        search_tags,
+      </if>
+      <if test="skuAuditMsg != null" >
+        sku_audit_msg,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="goodsSn != null" >
+        #{goodsSn,jdbcType=VARCHAR},
+      </if>
+      <if test="barcode != null" >
+        #{barcode,jdbcType=VARCHAR},
+      </if>
+      <if test="subName != null" >
+        #{subName,jdbcType=VARCHAR},
+      </if>
+      <if test="cateId != null" >
+        #{cateId,jdbcType=INTEGER},
+      </if>
+      <if test="icon != null" >
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="buyStatus != null" >
+        #{buyStatus,jdbcType=BIT},
+      </if>
+      <if test="timeBegin != null" >
+        #{timeBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="timeEnd != null" >
+        #{timeEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="minBought != null" >
+        #{minBought,jdbcType=INTEGER},
+      </if>
+      <if test="maxBought != null" >
+        #{maxBought,jdbcType=INTEGER},
+      </if>
+      <if test="userMinBought != null" >
+        #{userMinBought,jdbcType=INTEGER},
+      </if>
+      <if test="userMaxBought != null" >
+        #{userMaxBought,jdbcType=INTEGER},
+      </if>
+      <if test="originPrice != null" >
+        #{originPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="currentPrice != null" >
+        #{currentPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="isCoupon != null" >
+        #{isCoupon,jdbcType=BIT},
+      </if>
+      <if test="isDelivery != null" >
+        #{isDelivery,jdbcType=BIT},
+      </if>
+      <if test="isEffect != null" >
+        #{isEffect,jdbcType=BIT},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="userCount != null" >
+        #{userCount,jdbcType=INTEGER},
+      </if>
+      <if test="buyCount != null" >
+        #{buyCount,jdbcType=INTEGER},
+      </if>
+      <if test="allowPromote != null" >
+        #{allowPromote,jdbcType=BIT},
+      </if>
+      <if test="returnMoney != null" >
+        #{returnMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="returnScore != null" >
+        #{returnScore,jdbcType=INTEGER},
+      </if>
+      <if test="returnPoint != null" >
+        #{returnPoint,jdbcType=INTEGER},
+      </if>
+      <if test="briefIndex != null" >
+        #{briefIndex,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="dealGoodsType != null" >
+        #{dealGoodsType,jdbcType=INTEGER},
+      </if>
+      <if test="successTime != null" >
+        #{successTime,jdbcType=INTEGER},
+      </if>
+      <if test="weight != null" >
+        #{weight,jdbcType=DOUBLE},
+      </if>
+      <if test="weightId != null" >
+        #{weightId,jdbcType=INTEGER},
+      </if>
+      <if test="isReferral != null" >
+        #{isReferral,jdbcType=BIT},
+      </if>
+      <if test="buyType != null" >
+        #{buyType,jdbcType=BIT},
+      </if>
+      <if test="discount != null" >
+        #{discount,jdbcType=DOUBLE},
+      </if>
+      <if test="freeDelivery != null" >
+        #{freeDelivery,jdbcType=BIT},
+      </if>
+      <if test="definePayment != null" >
+        #{definePayment,jdbcType=BIT},
+      </if>
+      <if test="isHot != null" >
+        #{isHot,jdbcType=BIT},
+      </if>
+      <if test="isNew != null" >
+        #{isNew,jdbcType=BIT},
+      </if>
+      <if test="isBest != null" >
+        #{isBest,jdbcType=BIT},
+      </if>
+      <if test="isLottery != null" >
+        #{isLottery,jdbcType=BIT},
+      </if>
+      <if test="uname != null" >
+        #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="forbidSms != null" >
+        #{forbidSms,jdbcType=BIT},
+      </if>
+      <if test="cartType != null" >
+        #{cartType,jdbcType=BIT},
+      </if>
+      <if test="avgPoint != null" >
+        #{avgPoint,jdbcType=REAL},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=INTEGER},
+      </if>
+      <if test="onlineTime != null" >
+        #{onlineTime,jdbcType=INTEGER},
+      </if>
+      <if test="brandId != null" >
+        #{brandId,jdbcType=INTEGER},
+      </if>
+      <if test="commentCount != null" >
+        #{commentCount,jdbcType=INTEGER},
+      </if>
+      <if test="collectCount != null" >
+        #{collectCount,jdbcType=INTEGER},
+      </if>
+      <if test="levelLimit != null" >
+        #{levelLimit,jdbcType=BIT},
+      </if>
+      <if test="isEnsure != null" >
+        #{isEnsure,jdbcType=BIT},
+      </if>
+      <if test="isInsurance != null" >
+        #{isInsurance,jdbcType=BIT},
+      </if>
+      <if test="isReturns != null" >
+        #{isReturns,jdbcType=BIT},
+      </if>
+      <if test="isPay != null" >
+        #{isPay,jdbcType=BIT},
+      </if>
+      <if test="isIndexRecommend != null" >
+        #{isIndexRecommend,jdbcType=TINYINT},
+      </if>
+      <if test="isIndexNew != null" >
+        #{isIndexNew,jdbcType=BIT},
+      </if>
+      <if test="isIndexCrazy != null" >
+        #{isIndexCrazy,jdbcType=BIT},
+      </if>
+      <if test="cateId2 != null" >
+        #{cateId2,jdbcType=VARCHAR},
+      </if>
+      <if test="brandId2 != null" >
+        #{brandId2,jdbcType=VARCHAR},
+      </if>
+      <if test="divisionId != null" >
+        #{divisionId,jdbcType=SMALLINT},
+      </if>
+      <if test="supplierId != null" >
+        #{supplierId,jdbcType=INTEGER},
+      </if>
+      <if test="adminDelId != null" >
+        #{adminDelId,jdbcType=INTEGER},
+      </if>
+      <if test="phonePrice != null" >
+        #{phonePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="saleNum != null" >
+        #{saleNum,jdbcType=SMALLINT},
+      </if>
+      <if test="isBiaopin != null" >
+        #{isBiaopin,jdbcType=BIT},
+      </if>
+      <if test="dealBrand != null" >
+        #{dealBrand,jdbcType=INTEGER},
+      </if>
+      <if test="goodParams != null" >
+        #{goodParams,jdbcType=VARCHAR},
+      </if>
+      <if test="sellingPoint != null" >
+        #{sellingPoint,jdbcType=VARCHAR},
+      </if>
+      <if test="matchIds != null" >
+        #{matchIds,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileSort != null" >
+        #{mobileSort,jdbcType=INTEGER},
+      </if>
+      <if test="submitStatus != null" >
+        #{submitStatus,jdbcType=TINYINT},
+      </if>
+      <if test="submitTime != null" >
+        #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="auditStatus != null" >
+        #{auditStatus,jdbcType=TINYINT},
+      </if>
+      <if test="auditMsg != null" >
+        #{auditMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="auditTimeBak != null" >
+        #{auditTimeBak,jdbcType=INTEGER},
+      </if>
+      <if test="auditTime != null" >
+        #{auditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditAdminId != null" >
+        #{auditAdminId,jdbcType=INTEGER},
+      </if>
+      <if test="isSellerPost != null" >
+        #{isSellerPost,jdbcType=BIT},
+      </if>
+      <if test="syncWmsDate != null" >
+        #{syncWmsDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="syncEbsDate != null" >
+        #{syncEbsDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="syncFlagDate != null" >
+        #{syncFlagDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="syncWmsCount != null" >
+        #{syncWmsCount,jdbcType=INTEGER},
+      </if>
+      <if test="syncEbsCount != null" >
+        #{syncEbsCount,jdbcType=INTEGER},
+      </if>
+      <if test="isSale != null" >
+        #{isSale,jdbcType=TINYINT},
+      </if>
+      <if test="skuAuditStatus != null" >
+        #{skuAuditStatus,jdbcType=TINYINT},
+      </if>
+      <if test="skuAuditAdminId != null" >
+        #{skuAuditAdminId,jdbcType=INTEGER},
+      </if>
+      <if test="copyFromDealId != null" >
+        #{copyFromDealId,jdbcType=INTEGER},
+      </if>
+      <if test="skuAuditTime != null" >
+        #{skuAuditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="mDescription != null" >
+        #{mDescription,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="brief != null" >
+        #{brief,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="seoTitle != null" >
+        #{seoTitle,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="seoKeyword != null" >
+        #{seoKeyword,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="seoDescription != null" >
+        #{seoDescription,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="nameMatch != null" >
+        #{nameMatch,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="nameMatchRow != null" >
+        #{nameMatchRow,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="cateMatch != null" >
+        #{cateMatch,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="cateMatchRow != null" >
+        #{cateMatchRow,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="tagMatch != null" >
+        #{tagMatch,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="tagMatchRow != null" >
+        #{tagMatchRow,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="searchTags != null" >
+        #{searchTags,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="skuAuditMsg != null" >
+        #{skuAuditMsg,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+	<selectKey keyProperty="id" resultType="int" order="AFTER">  
+       SELECT LAST_INSERT_ID();  
+    </selectKey>    
+  </insert>
+  
+  <update id="update" parameterType="VeDeal" >
+    update ve_deal
+    <set >
+      <if test="goodsSn != null" >
+        goods_sn = #{goodsSn,jdbcType=VARCHAR},
+      </if>
+      <if test="barcode != null" >
+        barcode = #{barcode,jdbcType=VARCHAR},
+      </if>
+      <if test="subName != null" >
+        sub_name = #{subName,jdbcType=VARCHAR},
+      </if>
+      <if test="cateId != null" >
+        cate_id = #{cateId,jdbcType=INTEGER},
+      </if>
+      <if test="icon != null" >
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="buyStatus != null" >
+        buy_status = #{buyStatus,jdbcType=BIT},
+      </if>
+      <if test="timeBegin != null" >
+        time_begin = #{timeBegin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="timeEnd != null" >
+        time_end = #{timeEnd,jdbcType=TIMESTAMP},
+      </if>
+      <if test="minBought != null" >
+        min_bought = #{minBought,jdbcType=INTEGER},
+      </if>
+      <if test="maxBought != null" >
+        max_bought = #{maxBought,jdbcType=INTEGER},
+      </if>
+      <if test="userMinBought != null" >
+        user_min_bought = #{userMinBought,jdbcType=INTEGER},
+      </if>
+      <if test="userMaxBought != null" >
+        user_max_bought = #{userMaxBought,jdbcType=INTEGER},
+      </if>
+      <if test="originPrice != null" >
+        origin_price = #{originPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="currentPrice != null" >
+        current_price = #{currentPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="isCoupon != null" >
+        is_coupon = #{isCoupon,jdbcType=BIT},
+      </if>
+      <if test="isDelivery != null" >
+        is_delivery = #{isDelivery,jdbcType=BIT},
+      </if>
+      <if test="isEffect != null" >
+        is_effect = #{isEffect,jdbcType=BIT},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="userCount != null" >
+        user_count = #{userCount,jdbcType=INTEGER},
+      </if>
+      <if test="buyCount != null" >
+        buy_count = #{buyCount,jdbcType=INTEGER},
+      </if>
+      <if test="allowPromote != null" >
+        allow_promote = #{allowPromote,jdbcType=BIT},
+      </if>
+      <if test="returnMoney != null" >
+        return_money = #{returnMoney,jdbcType=DOUBLE},
+      </if>
+      <if test="returnScore != null" >
+        return_score = #{returnScore,jdbcType=INTEGER},
+      </if>
+      <if test="returnPoint != null" >
+        return_point = #{returnPoint,jdbcType=INTEGER},
+      </if>
+      <if test="briefIndex != null" >
+        brief_index = #{briefIndex,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="dealGoodsType != null" >
+        deal_goods_type = #{dealGoodsType,jdbcType=INTEGER},
+      </if>
+      <if test="successTime != null" >
+        success_time = #{successTime,jdbcType=INTEGER},
+      </if>
+      <if test="weight != null" >
+        weight = #{weight,jdbcType=DOUBLE},
+      </if>
+      <if test="weightId != null" >
+        weight_id = #{weightId,jdbcType=INTEGER},
+      </if>
+      <if test="isReferral != null" >
+        is_referral = #{isReferral,jdbcType=BIT},
+      </if>
+      <if test="buyType != null" >
+        buy_type = #{buyType,jdbcType=BIT},
+      </if>
+      <if test="discount != null" >
+        discount = #{discount,jdbcType=DOUBLE},
+      </if>
+      <if test="freeDelivery != null" >
+        free_delivery = #{freeDelivery,jdbcType=BIT},
+      </if>
+      <if test="definePayment != null" >
+        define_payment = #{definePayment,jdbcType=BIT},
+      </if>
+      <if test="isHot != null" >
+        is_hot = #{isHot,jdbcType=BIT},
+      </if>
+      <if test="isNew != null" >
+        is_new = #{isNew,jdbcType=BIT},
+      </if>
+      <if test="isBest != null" >
+        is_best = #{isBest,jdbcType=BIT},
+      </if>
+      <if test="isLottery != null" >
+        is_lottery = #{isLottery,jdbcType=BIT},
+      </if>
+      <if test="uname != null" >
+        uname = #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="forbidSms != null" >
+        forbid_sms = #{forbidSms,jdbcType=BIT},
+      </if>
+      <if test="cartType != null" >
+        cart_type = #{cartType,jdbcType=BIT},
+      </if>
+      <if test="avgPoint != null" >
+        avg_point = #{avgPoint,jdbcType=REAL},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=INTEGER},
+      </if>
+      <if test="onlineTime != null" >
+        online_time = #{onlineTime,jdbcType=INTEGER},
+      </if>
+      <if test="brandId != null" >
+        brand_id = #{brandId,jdbcType=INTEGER},
+      </if>
+      <if test="commentCount != null" >
+        comment_count = #{commentCount,jdbcType=INTEGER},
+      </if>
+      <if test="collectCount != null" >
+        collect_count = #{collectCount,jdbcType=INTEGER},
+      </if>
+      <if test="levelLimit != null" >
+        level_limit = #{levelLimit,jdbcType=BIT},
+      </if>
+      <if test="isEnsure != null" >
+        is_ensure = #{isEnsure,jdbcType=BIT},
+      </if>
+      <if test="isInsurance != null" >
+        is_insurance = #{isInsurance,jdbcType=BIT},
+      </if>
+      <if test="isReturns != null" >
+        is_returns = #{isReturns,jdbcType=BIT},
+      </if>
+      <if test="isPay != null" >
+        is_pay = #{isPay,jdbcType=BIT},
+      </if>
+      <if test="isIndexRecommend != null" >
+        is_index_recommend = #{isIndexRecommend,jdbcType=TINYINT},
+      </if>
+      <if test="isIndexNew != null" >
+        is_index_new = #{isIndexNew,jdbcType=BIT},
+      </if>
+      <if test="isIndexCrazy != null" >
+        is_index_crazy = #{isIndexCrazy,jdbcType=BIT},
+      </if>
+      <if test="cateId2 != null" >
+        cate_id2 = #{cateId2,jdbcType=VARCHAR},
+      </if>
+      <if test="brandId2 != null" >
+        brand_id2 = #{brandId2,jdbcType=VARCHAR},
+      </if>
+      <if test="divisionId != null" >
+        division_id = #{divisionId,jdbcType=SMALLINT},
+      </if>
+      <if test="supplierId != null" >
+        supplier_id = #{supplierId,jdbcType=INTEGER},
+      </if>
+      <if test="adminDelId != null" >
+        admin_del_id = #{adminDelId,jdbcType=INTEGER},
+      </if>
+      <if test="phonePrice != null" >
+        phone_price = #{phonePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="saleNum != null" >
+        sale_num = #{saleNum,jdbcType=SMALLINT},
+      </if>
+      <if test="isBiaopin != null" >
+        is_biaopin = #{isBiaopin,jdbcType=BIT},
+      </if>
+      <if test="dealBrand != null" >
+        deal_brand = #{dealBrand,jdbcType=INTEGER},
+      </if>
+      <if test="goodParams != null" >
+        good_params = #{goodParams,jdbcType=VARCHAR},
+      </if>
+      <if test="sellingPoint != null" >
+        selling_point = #{sellingPoint,jdbcType=VARCHAR},
+      </if>
+      <if test="matchIds != null" >
+        match_ids = #{matchIds,jdbcType=VARCHAR},
+      </if>
+      <if test="mobileSort != null" >
+        mobile_sort = #{mobileSort,jdbcType=INTEGER},
+      </if>
+      <if test="submitStatus != null" >
+        submit_status = #{submitStatus,jdbcType=TINYINT},
+      </if>
+      <if test="submitTime != null" >
+        submit_time = #{submitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="auditStatus != null" >
+        audit_status = #{auditStatus,jdbcType=TINYINT},
+      </if>
+      <if test="auditMsg != null" >
+        audit_msg = #{auditMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="auditTimeBak != null" >
+        audit_time_bak = #{auditTimeBak,jdbcType=INTEGER},
+      </if>
+      <if test="auditTime != null" >
+        audit_time = #{auditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="auditAdminId != null" >
+        audit_admin_id = #{auditAdminId,jdbcType=INTEGER},
+      </if>
+      <if test="isSellerPost != null" >
+        is_seller_post = #{isSellerPost,jdbcType=BIT},
+      </if>
+      <if test="syncWmsDate != null" >
+        sync_wms_date = #{syncWmsDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="syncEbsDate != null" >
+        sync_ebs_date = #{syncEbsDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="syncFlagDate != null" >
+        sync_flag_date = #{syncFlagDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="syncWmsCount != null" >
+        sync_wms_count = #{syncWmsCount,jdbcType=INTEGER},
+      </if>
+      <if test="syncEbsCount != null" >
+        sync_ebs_count = #{syncEbsCount,jdbcType=INTEGER},
+      </if>
+      <if test="isSale != null" >
+        is_sale = #{isSale,jdbcType=TINYINT},
+      </if>
+      <if test="skuAuditStatus != null" >
+        sku_audit_status = #{skuAuditStatus,jdbcType=TINYINT},
+      </if>
+      <if test="skuAuditAdminId != null" >
+        sku_audit_admin_id = #{skuAuditAdminId,jdbcType=INTEGER},
+      </if>
+      <if test="copyFromDealId != null" >
+        copy_from_deal_id = #{copyFromDealId,jdbcType=INTEGER},
+      </if>
+      <if test="skuAuditTime != null" >
+        sku_audit_time = #{skuAuditTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="mDescription != null" >
+        m_description = #{mDescription,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="brief != null" >
+        brief = #{brief,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="seoTitle != null" >
+        seo_title = #{seoTitle,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="seoKeyword != null" >
+        seo_keyword = #{seoKeyword,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="seoDescription != null" >
+        seo_description = #{seoDescription,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="nameMatch != null" >
+        name_match = #{nameMatch,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="nameMatchRow != null" >
+        name_match_row = #{nameMatchRow,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="cateMatch != null" >
+        cate_match = #{cateMatch,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="cateMatchRow != null" >
+        cate_match_row = #{cateMatchRow,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="tagMatch != null" >
+        tag_match = #{tagMatch,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="tagMatchRow != null" >
+        tag_match_row = #{tagMatchRow,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="searchTags != null" >
+        search_tags = #{searchTags,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="skuAuditMsg != null" >
+        sku_audit_msg = #{skuAuditMsg,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+ 
+</mapper>

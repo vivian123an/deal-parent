@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="me.quxiu.deal.mapper.VeDealNewattrMapper" >
+  <resultMap id="BaseResultMap" type="VeDealNewattr" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="deal_id" property="dealId" jdbcType="INTEGER" />
+    <result column="deal_size" property="dealSize" jdbcType="VARCHAR" />
+    <result column="deal_price" property="dealPrice" jdbcType="DECIMAL" />
+    <result column="barcode" property="barcode" jdbcType="VARCHAR" />
+    <result column="material_code" property="materialCode" jdbcType="VARCHAR" />
+    <result column="deal_phone_price" property="dealPhonePrice" jdbcType="DECIMAL" />
+    <result column="deal_origin_price" property="dealOriginPrice" jdbcType="DECIMAL" />
+    <result column="cost_price" property="costPrice" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    d_newAttr.id id, d_newAttr.deal_id, d_newAttr.deal_size, d_newAttr.deal_price, d_newAttr.barcode, d_newAttr.material_code, 
+    d_newAttr.deal_phone_price, d_newAttr.deal_origin_price, d_newAttr.cost_price
+  </sql>
+  <select id="get" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ve_deal_newattr d_newAttr
+    where d_newAttr.id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <select id="getNewattrByDealId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ve_deal_newattr d_newAttr
+    where d_newAttr.deal_id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <insert id="save" parameterType="VeDealNewattr" useGeneratedKeys="true" keyProperty="id"  keyColumn="id">
+    insert into ve_deal_newattr
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dealId != null" >
+        deal_id,
+      </if>
+      <if test="dealSize != null" >
+        deal_size,
+      </if>
+      <if test="dealPrice != null" >
+        deal_price,
+      </if>
+      <if test="barcode != null" >
+        barcode,
+      </if>
+      <if test="materialCode != null" >
+        material_code,
+      </if>
+      <if test="dealPhonePrice != null" >
+        deal_phone_price,
+      </if>
+      <if test="dealOriginPrice != null" >
+        deal_origin_price,
+      </if>
+      <if test="costPrice != null" >
+        cost_price,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dealId != null" >
+        #{dealId,jdbcType=INTEGER},
+      </if>
+      <if test="dealSize != null" >
+        #{dealSize,jdbcType=VARCHAR},
+      </if>
+      <if test="dealPrice != null" >
+        #{dealPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="barcode != null" >
+        #{barcode,jdbcType=VARCHAR},
+      </if>
+      <if test="materialCode != null" >
+        #{materialCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dealPhonePrice != null" >
+        #{dealPhonePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="dealOriginPrice != null" >
+        #{dealOriginPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="costPrice != null" >
+        #{costPrice,jdbcType=DECIMAL},
+      </if>
+    </trim>
+	<selectKey keyProperty="id" resultType="int" order="AFTER">  
+       SELECT LAST_INSERT_ID();  
+    </selectKey>    
+  </insert>
+  
+  <update id="update" parameterType="VeDealNewattr" >
+    update ve_deal_newattr
+    <set >
+      <if test="dealId != null" >
+        deal_id = #{dealId,jdbcType=INTEGER},
+      </if>
+      <if test="dealSize != null" >
+        deal_size = #{dealSize,jdbcType=VARCHAR},
+      </if>
+      <if test="dealPrice != null" >
+        deal_price = #{dealPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="barcode != null" >
+        barcode = #{barcode,jdbcType=VARCHAR},
+      </if>
+      <if test="materialCode != null" >
+        material_code = #{materialCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dealPhonePrice != null" >
+        deal_phone_price = #{dealPhonePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="dealOriginPrice != null" >
+        deal_origin_price = #{dealOriginPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="costPrice != null" >
+        cost_price = #{costPrice,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <insert id="saveBatch" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id"  keyColumn="id">
+  	insert into ve_deal_newattr(deal_id, deal_size, deal_price, barcode, material_code, deal_phone_price, deal_origin_price, cost_price) values
+  	<foreach collection="list" item="item" index="index" separator=",">  
+	    <trim prefix="(" suffix=")" suffixOverrides=",">
+			<choose>
+				<when test="item.dealId == null">0,</when>
+				<otherwise>#{item.dealId},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.dealSize == null">'',</when>
+				<otherwise>#{item.dealSize},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.dealPrice == null">0.0000,</when>
+				<otherwise>#{item.dealPrice},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.barcode == null">'',</when>
+				<otherwise>#{item.barcode},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.materialCode == null">'',</when>
+				<otherwise>#{item.materialCode},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.dealPhonePrice == null">0.0000,</when>
+				<otherwise>#{item.dealPhonePrice},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.dealOriginPrice == null">0.0000,</when>
+				<otherwise>#{item.dealOriginPrice},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.costPrice == null">0.0000,</when>
+				<otherwise>#{item.costPrice},</otherwise>
+			</choose>
+	    </trim>
+    </foreach>
+  	<selectKey keyProperty="id" resultType="int" order="AFTER">  
+    	SELECT LAST_INSERT_ID();  
+    </selectKey>
+  </insert>
+
+</mapper>

@@ -1,0 +1,11 @@
+根据ve_deal主键，在ve_deal_color的rel_id字段找到相关联的ve_deal，
+对所有相关ve_deal做复制，并且复制关联的以下表
+ve_deal,
+ve_deal_color,
+ve_deal_newattr,
+ve_goods_sku,
+ve_deal_storage,
+ve_deal_snapshot,
+ve_deal_gallery,
+ve_pro_cates,
+ve_prop_goods,

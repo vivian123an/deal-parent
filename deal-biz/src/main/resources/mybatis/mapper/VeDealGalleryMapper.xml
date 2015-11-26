@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="me.quxiu.deal.mapper.VeDealGalleryMapper" >
+  <resultMap id="BaseResultMap" type="VeDealGallery" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="img" property="img" jdbcType="VARCHAR" />
+    <result column="deal_id" property="dealId" jdbcType="INTEGER" />
+    <result column="ver" property="ver" jdbcType="INTEGER" />
+    <result column="sort" property="sort" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    dg.id id, dg.img, dg.deal_id, dg.ver, dg.sort
+  </sql>
+  <select id="get" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ve_deal_gallery dg
+    where dg.id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="getByDealId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ve_deal_gallery dg
+    where dg.deal_id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <insert id="save" parameterType="VeDealGallery" useGeneratedKeys="true" keyProperty="id"  keyColumn="id">
+    insert into ve_deal_gallery
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="img != null" >
+        img,
+      </if>
+      <if test="dealId != null" >
+        deal_id,
+      </if>
+      <if test="ver != null" >
+        ver,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="img != null" >
+        #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="dealId != null" >
+        #{dealId,jdbcType=INTEGER},
+      </if>
+      <if test="ver != null" >
+        #{ver,jdbcType=INTEGER},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=BIT},
+      </if>
+    </trim>
+	<selectKey keyProperty="id" resultType="int" order="AFTER">  
+       SELECT LAST_INSERT_ID();  
+    </selectKey>    
+  </insert>
+  
+  <update id="update" parameterType="VeDealGallery" >
+    update ve_deal_gallery
+    <set >
+      <if test="img != null" >
+        img = #{img,jdbcType=VARCHAR},
+      </if>
+      <if test="dealId != null" >
+        deal_id = #{dealId,jdbcType=INTEGER},
+      </if>
+      <if test="ver != null" >
+        ver = #{dealId,jdbcType=INTEGER},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <insert id="saveBatch" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id"  keyColumn="id">
+  	insert into ve_deal_gallery(img, deal_id, ver, sort) values
+  	<foreach collection="list" item="item" index="index" separator=",">  
+	    <trim prefix="(" suffix=")" suffixOverrides=",">
+			<choose>
+				<when test="item.img == null">'',</when>
+				<otherwise>#{item.img},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.dealId == null">0,</when>
+				<otherwise>#{item.dealId},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.ver == null">0,</when>
+				<otherwise>#{item.ver},</otherwise>
+			</choose>
+			<choose>
+				<when test="item.sort == null">0,</when>
+				<otherwise>#{item.sort},</otherwise>
+			</choose>
+	    </trim>
+    </foreach>
+  	<selectKey keyProperty="id" resultType="int" order="AFTER">  
+    	SELECT LAST_INSERT_ID();  
+    </selectKey>
+  </insert>
+  
+</mapper>

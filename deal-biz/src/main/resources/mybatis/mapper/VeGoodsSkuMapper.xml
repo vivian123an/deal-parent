@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="me.quxiu.deal.mapper.VeGoodsSkuMapper" >
+  <resultMap id="BaseResultMap" type="VeGoodsSku" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
+    <result column="color" property="color" jdbcType="VARCHAR" />
+    <result column="color_id" property="colorId" jdbcType="INTEGER" />
+    <result column="size" property="size" jdbcType="VARCHAR" />
+    <result column="size_id" property="sizeId" jdbcType="INTEGER" />
+    <result column="num" property="num" jdbcType="INTEGER" />
+    <result column="sale_num" property="saleNum" jdbcType="INTEGER" />
+    <result column="material_code" property="materialCode" jdbcType="VARCHAR" />
+    <result column="attr_id" property="attrId" jdbcType="INTEGER" />
+    <result column="deal_price" property="dealPrice" jdbcType="DECIMAL" />
+    <result column="deal_phone_price" property="dealPhonePrice" jdbcType="DECIMAL" />
+    <result column="deal_origin_price" property="dealOriginPrice" jdbcType="DECIMAL" />
+    <result column="barcode" property="barcode" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    g_sku.id id, g_sku.goods_id, g_sku.color, g_sku.color_id, g_sku.size, g_sku.size_id, g_sku.num, g_sku.sale_num, g_sku.material_code, g_sku.attr_id, 
+    g_sku.deal_price, g_sku.deal_phone_price, g_sku.deal_origin_price, g_sku.barcode
+  </sql>
+  
+  <select id="get" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ve_goods_sku g_sku
+    where g_sku.id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <select id="getGoodsSkuByDealNewAttrId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ve_goods_sku g_sku
+    where g_sku.attr_id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <insert id="save" parameterType="VeGoodsSku" useGeneratedKeys="true" keyProperty="id"  keyColumn="id">
+    insert into ve_goods_sku
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="goodsId != null" >
+        goods_id,
+      </if>
+      <if test="color != null" >
+        color,
+      </if>
+      <if test="colorId != null" >
+        color_id,
+      </if>
+      <if test="size != null" >
+        size,
+      </if>
+      <if test="sizeId != null" >
+        size_id,
+      </if>
+      <if test="num != null" >
+        num,
+      </if>
+      <if test="saleNum != null" >
+        sale_num,
+      </if>
+      <if test="materialCode != null" >
+        material_code,
+      </if>
+      <if test="attrId != null" >
+        attr_id,
+      </if>
+      <if test="dealPrice != null" >
+        deal_price,
+      </if>
+      <if test="dealPhonePrice != null" >
+        deal_phone_price,
+      </if>
+      <if test="dealOriginPrice != null" >
+        deal_origin_price,
+      </if>
+      <if test="barcode != null" >
+        barcode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="color != null" >
+        #{color,jdbcType=VARCHAR},
+      </if>
+      <if test="colorId != null" >
+        #{colorId,jdbcType=INTEGER},
+      </if>
+      <if test="size != null" >
+        #{size,jdbcType=VARCHAR},
+      </if>
+      <if test="sizeId != null" >
+        #{sizeId,jdbcType=INTEGER},
+      </if>
+      <if test="num != null" >
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="saleNum != null" >
+        #{saleNum,jdbcType=INTEGER},
+      </if>
+      <if test="materialCode != null" >
+        #{materialCode,jdbcType=VARCHAR},
+      </if>
+      <if test="attrId != null" >
+        #{attrId,jdbcType=INTEGER},
+      </if>
+      <if test="dealPrice != null" >
+        #{dealPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="dealPhonePrice != null" >
+        #{dealPhonePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="dealOriginPrice != null" >
+        #{dealOriginPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="barcode != null" >
+        #{barcode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+	<selectKey keyProperty="id" resultType="int" order="AFTER">  
+       SELECT LAST_INSERT_ID();  
+    </selectKey>    
+  </insert>
+  
+  
+  <update id="update" parameterType="VeGoodsSku" >
+    update ve_goods_sku
+    <set >
+      <if test="goodsId != null" >
+        goods_id = #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="color != null" >
+        color = #{color,jdbcType=VARCHAR},
+      </if>
+      <if test="colorId != null" >
+        color_id = #{colorId,jdbcType=INTEGER},
+      </if>
+      <if test="size != null" >
+        size = #{size,jdbcType=VARCHAR},
+      </if>
+      <if test="sizeId != null" >
+        size_id = #{sizeId,jdbcType=INTEGER},
+      </if>
+      <if test="num != null" >
+        num = #{num,jdbcType=INTEGER},
+      </if>
+      <if test="saleNum != null" >
+        sale_num = #{saleNum,jdbcType=INTEGER},
+      </if>
+      <if test="materialCode != null" >
+        material_code = #{materialCode,jdbcType=VARCHAR},
+      </if>
+      <if test="attrId != null" >
+        attr_id = #{attrId,jdbcType=INTEGER},
+      </if>
+      <if test="dealPrice != null" >
+        deal_price = #{dealPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="dealPhonePrice != null" >
+        deal_phone_price = #{dealPhonePrice,jdbcType=DECIMAL},
+      </if>
+      <if test="dealOriginPrice != null" >
+        deal_origin_price = #{dealOriginPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="barcode != null" >
+        barcode = #{barcode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+</mapper>
